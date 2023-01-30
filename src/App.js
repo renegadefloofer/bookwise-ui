@@ -4,9 +4,11 @@ import Recommendations from './pages/Recommendations';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Recommendations />
+    <div className="app">
+      <div className="overlay">
+        <Header />
+        <Recommendations />
+      </div>
     </div>
   );
 }

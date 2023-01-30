@@ -5,12 +5,15 @@ const RequestGenerationForm = ({ generateRequest }) => {
   const [selectedValues, setSelectedValues] = useState([]);
 
   const changeHandler = (event) => {
+    //previously chosen options
     const options = [...event.target.selectedOptions];
 
+    //check if greater than 3 options are chosen
     if (options.length > 3) {
       return;
     }
 
+    //store the values and set the state
     const values = options.map((option) => option.value);
     setSelectedValues(values);
   };
@@ -18,7 +21,7 @@ const RequestGenerationForm = ({ generateRequest }) => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(selectedValues);
-    generateRequest(selectedValues);
+    generateRequest({ name: 'Vivek', genres: selectedValues });
   };
   return (
     <div className={styles['container']}>
@@ -95,7 +98,6 @@ const RequestGenerationForm = ({ generateRequest }) => {
           Generate
         </button>
       </form>
-      <h3>{selectedValues}</h3>
     </div>
   );
 };
