@@ -11,13 +11,24 @@ const Recommendations = () => {
 
   const generateRequest = async ({ name, userId, genres, notes }) => {
     //calculate text to be copied
-    const requestQuestion = `Hi, I'm trying to pick a book to read. Could you please share some recommendations in the following genres?`;
-    const requestGenres = `${genres.map((genre) => genre)}`;
-    const response = await saveRecommendation(name, genres);
-    const requestURL = BASE_URL.concat(response);
+    const requestQuestion = `Hi, Could you please share some book recommendations in the following genres? `;
+    const requestGenres = genres.map((genre) => genre).join(', ');
+    const { message: promptID, error } = await saveRecommendation(name, genres);
+    console.log(promptID);
+    let requestURL = '';
+    if (error) {
+      console.log(error);
+    } else {
+      requestURL = BASE_URL.concat('/', promptID);
+      console.log(requestURL);
+    }
 
     //saving in text format for copying
-    requestText = requestQuestion.concat(requestGenres, requestURL);
+    requestText = requestQuestion.concat(
+      requestGenres,
+      ' using this link: ',
+      requestURL
+    );
 
     //saving as JSX element to display updated state
     setRequestContent(

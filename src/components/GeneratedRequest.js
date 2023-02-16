@@ -11,10 +11,14 @@ const GeneratedRequest = ({ genres, Question, requestURL, copyHandler }) => {
   );
   return (
     <div className={styles['request']}>
-      <button onClick={copyHandler}>Copy</button>
       <div className={styles['question']}>{Question}</div>
       {genresList}
-      <div>Please go to {requestURL} to provide recommendations!</div>
+      <div className={styles['text']}>
+        Please go to {requestURL} to provide recommendations!
+      </div>
+      <button className={styles['copy-btn']} onClick={copyHandler}>
+        Copy
+      </button>
     </div>
   );
 };

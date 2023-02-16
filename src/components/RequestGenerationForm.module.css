@@ -3,7 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
+  margin: 0.2rem 1rem;
+  border: 1px solid red;
+  /* optimize for iphone se */
 }
 
 .form {
@@ -11,13 +13,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 1px solid red;
 }
 .items-container {
-  display: flex;
   padding: 0.2rem;
   height: 15rem;
   border-radius: 0.2rem;
   background-color: rgba(231, 237, 242, 0.267);
+  width: 100%;
+  text-align: center;
 }
 
 .option-item {

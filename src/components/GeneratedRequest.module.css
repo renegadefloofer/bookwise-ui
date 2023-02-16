@@ -1,8 +1,9 @@
 .request {
-  padding: 2rem;
+  padding: 1rem;
   border: 1.4px dashed rgba(1, 1, 1, 0.257);
+  position: relative;
   border-radius: 0.2rem;
-  margin: 1rem 4rem;
+  margin: 1rem 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +14,39 @@
   text-align: center;
 }
 
+.text {
+  text-align: center;
+  overflow: hidden;
+  max-width: 96%;
+}
+
+@media (min-width: 630px) {
+  .request {
+    margin: 1rem 4rem;
+  }
+}
+
 .list {
   list-style: none;
+}
+
+.copy-btn {
+  position: relative;
+  bottom: 0.2rem;
+  height: 1.8rem;
+  width: 4.6rem;
+  margin: 1.4rem;
+  font-weight: 400;
+  color: rgb(0, 0, 0);
+  background-color: rgba(226, 255, 232, 0.349);
+  box-shadow: rgba(0, 0, 0, 0.4) 5px 5px 10px;
+  border-radius: 0.25rem;
+}
+
+.copy-btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 5px 5px 15px;
+}
+
+.copy-btn:active {
+  transform: translateY(0.8px);
 }
