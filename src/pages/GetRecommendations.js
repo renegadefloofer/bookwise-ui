@@ -3,9 +3,9 @@ import GeneratedRequest from '../components/GeneratedRequest';
 import RequestGenerationForm from '../components/RequestGenerationForm';
 import { BASE_URL, saveRecommendation } from '../utilities/save-recommendation';
 
-import styles from './Recommendations.module.css';
+import styles from './GetRecommendations.module.css';
 
-const Recommendations = () => {
+const GetRecommendations = () => {
   const [requestContent, setRequestContent] = useState(<></>);
   let requestText = '';
 
@@ -60,4 +60,4 @@ const Recommendations = () => {
   );
 };
 
-export default Recommendations;
+export default GetRecommendations;
