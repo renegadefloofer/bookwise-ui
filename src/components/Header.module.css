@@ -12,8 +12,10 @@
   padding: 0.4rem;
 }
 
-.nav-items {
+.link {
   padding: 0.2rem;
+  text-decoration: none;
+  
 }
 img {
   height: 1.4rem;

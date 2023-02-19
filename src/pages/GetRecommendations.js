@@ -1,3 +1,4 @@
+import mixpanel from 'mixpanel-browser';
 import React, { useState } from 'react';
 import GeneratedRequest from '../components/GeneratedRequest';
 import RequestGenerationForm from '../components/RequestGenerationForm';
@@ -6,6 +7,8 @@ import { BASE_URL, saveRecommendation } from '../utilities/save-recommendation';
 import styles from './GetRecommendations.module.css';
 
 const GetRecommendations = () => {
+
+  mixpanel.track("Loaded get Recommendations page")
   const [requestContent, setRequestContent] = useState(<></>);
   let requestText = '';
 
