@@ -1,0 +1,12 @@
+.recommendations-container {
+  border: 1px solid red;
+}
+
+.heading {
+  font-size: 1.2rem;
+}
+
+.list-item {
+  list-style: none;
+  color: blueviolet;
+}
