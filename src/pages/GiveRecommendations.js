@@ -18,15 +18,19 @@ const GiveRecommendations = () => {
   useEffect(() => {
     const fetchedRecommendations = async (promptid) => {
       const response = await getRecommendations(promptid);
-      console.log(response);
+      console.log(response['data']);
       return response['data'];
     };
-    const data = fetchedRecommendations(promptid);
-    const bookData = data.map((book) => {
-      return { title: book['title'], author: book['author'] };
-    });
-    console.log(bookData);
-    setBooks(bookData);
+    let booksArray = [];
+    fetchedRecommendations(promptid)
+      .then((data) => {
+        booksArray = data.map((book) => {
+          return { title: book['title'], author: book['author'] };
+        });
+        console.log(booksArray);
+        setBooks(booksArray);
+      })
+      .catch((err) => console.log(err));
   }, []);
 
   mixpanel.track('Loaded give recommendations page');
