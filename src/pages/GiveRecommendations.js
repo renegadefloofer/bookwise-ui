@@ -1,8 +1,10 @@
+import { useState, useEffect } from 'react';
 import mixpanel from 'mixpanel-browser';
 import MessageBox from '../components/MessageBox';
 import RecommendationInputForm from '../components/RecommendationInputForm';
 import Recommendations from '../components/Recommendations';
 import styles from './GetRecommendations.module.css';
+import { getRecommendations } from '../utilities/get-recommendations';
 
 const savedRecommendations = [
   { title: 'Harry Potter', author: 'J K Rowling' },
@@ -10,6 +12,23 @@ const savedRecommendations = [
 ];
 
 const GiveRecommendations = () => {
+  const promptid = '63da4e57ccf150e6bdc11649';
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchedRecommendations = async (promptid) => {
+      const response = await getRecommendations(promptid);
+      console.log(response);
+      return response['data'];
+    };
+    const data = fetchedRecommendations(promptid);
+    const bookData = data.map((book) => {
+      return { title: book['title'], author: book['author'] };
+    });
+    console.log(bookData);
+    setBooks(bookData);
+  }, []);
+
   mixpanel.track('Loaded give recommendations page');
   return (
     <div className={styles['container']}>
@@ -19,9 +38,7 @@ const GiveRecommendations = () => {
         genres={['Fiction', 'Comedy']}
       ></MessageBox>
       <RecommendationInputForm></RecommendationInputForm>
-      <Recommendations
-        retrievedRecommendations={savedRecommendations}
-      ></Recommendations>
+      <Recommendations retrievedRecommendations={books}></Recommendations>
     </div>
   );
 };

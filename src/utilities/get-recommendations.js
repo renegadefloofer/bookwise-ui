@@ -1,13 +1,15 @@
 export const BASE_URL = 'https://app.arsolutions.it/api/v1/book';
 
-export const getRecommendation = async (promptid) => {
+export const getRecommendations = async (promptid) => {
   const fetchData = async () => {
+    console.log('in fd');
     try {
       const params = {
-        promptID: promptid,
+        prompt_id: promptid,
       };
       const queryString = new URLSearchParams(params).toString();
 
+      console.log(`${BASE_URL}?${queryString}`);
       const response = await fetch(`${BASE_URL}?${queryString}`, {
         method: 'GET',
         headers: {
@@ -16,9 +18,9 @@ export const getRecommendation = async (promptid) => {
         redirect: 'follow',
       });
       const json = await response.json();
-
       const recommendations = json['data'];
-      const recommendationsParsed = recommendations.forEach((item) => {
+      console.log(recommendations);
+      const recommendationsParsed = recommendations.map((item) => {
         return {
           id: item['_id']['$oid'],
           title: item['title'],
@@ -26,7 +28,7 @@ export const getRecommendation = async (promptid) => {
           isbn: item['isbn'],
         };
       });
-
+      console.log(recommendationsParsed);
       return { data: recommendationsParsed, error: null };
     } catch (error) {
       console.error(error);
