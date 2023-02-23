@@ -1,6 +1,6 @@
 import styles from './RecommendationInputForm.module.css';
 
-const RecommendationInputForm = () => {
+const RecommendationInputForm = ({ promptID }) => {
   return (
     <div className={styles['form-container']}>
       <h3 className={styles['heading']}>Recommend a Book</h3>

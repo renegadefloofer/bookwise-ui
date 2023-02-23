@@ -22,7 +22,9 @@ function App() {
       <Route path="/" element={<Root />}>
         <Route index element={<GetRecommendations />} />
         <Route path="/getrecommendations/" element={<GetRecommendations />} />
-        <Route path="/giverecommendations/" element={<GiveRecommendations />} />
+        <Route path="/giverecommendations/">
+          <Route index path=":promptID" element={<GiveRecommendations />} />
+        </Route>
       </Route>
     )
   );

@@ -7,8 +7,9 @@ const Recommendations = ({ retrievedRecommendations }) => {
       <ul className={styles['list']}>
         {retrievedRecommendations.map((recommendation) => {
           return (
-            <li className={styles['list-item']}>
-              <span>{recommendation.title} </span>by
+            <li className={styles['list-item']} key={recommendation.id}>
+              <span>{recommendation.title} </span>
+              by
               <span> {recommendation.author}</span>
             </li>
           );

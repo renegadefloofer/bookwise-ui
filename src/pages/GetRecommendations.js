@@ -7,8 +7,7 @@ import { BASE_URL, saveRecommendation } from '../utilities/save-recommendation';
 import styles from './GetRecommendations.module.css';
 
 const GetRecommendations = () => {
-
-  mixpanel.track("Loaded get Recommendations page")
+  mixpanel.track('Loaded get Recommendations page');
   const [requestContent, setRequestContent] = useState(<></>);
   let requestText = '';
 
