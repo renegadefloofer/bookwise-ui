@@ -17,9 +17,7 @@ export const saveRecommendation = async (name, genres) => {
         redirect: 'follow',
       });
       const json = await response.json();
-      console.log(json);
       const promptID = json['data']['_id'][0]['$oid'];
-      console.log(promptID);
       return { message: promptID, error: null };
     } catch (error) {
       console.error(error);
