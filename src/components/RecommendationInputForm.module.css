@@ -10,3 +10,41 @@
   list-style: none;
   color: blueviolet;
 }
+
+.form-control {
+  display: inline-block;
+  padding: 1rem;
+}
+
+.form-control label {
+  padding-right: 0.2rem;
+}
+
+.form-control input {
+  border-radius: 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .form-control {
+    display: block;
+  }
+}
+
+.btn {
+  height: 2rem;
+  width: 6rem;
+  margin: 0.6rem;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+  background-color: rgba(226, 255, 232, 0.668);
+  box-shadow: rgba(0, 0, 0, 0.4) 5px 5px 10px;
+  border-radius: 0.25rem;
+}
+
+.btn:hover {
+  box-shadow: rgba(0, 0, 0, 0.4) 5px 5px 15px;
+}
+
+.btn:active {
+  transform: translateY(0.8px);
+}
