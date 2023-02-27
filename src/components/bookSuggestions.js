@@ -24,10 +24,19 @@ const BookSuggestions = ({ title, author }) => {
           };
         });
         console.log(suggestedBooks);
+        setBookSuggestions(suggestedBooks);
       });
   }, [title, author]);
 
-  return <div></div>;
+  return (
+    <ul>
+      {bookSuggestions.map((book) => (
+        <li>
+          {book.title} by {book.author}
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default BookSuggestions;

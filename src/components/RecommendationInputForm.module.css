@@ -30,6 +30,10 @@
   }
 }
 
+.error {
+  color: rgb(194, 12, 12);
+}
+
 .btn {
   height: 2rem;
   width: 6rem;

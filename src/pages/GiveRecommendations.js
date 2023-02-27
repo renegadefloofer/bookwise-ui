@@ -53,6 +53,14 @@ const GiveRecommendations = () => {
       });
   }, [promptID]);
 
+  const bookAddHandler = (title, author, isbn, id) => {
+    setRecommendations((prevData) => {
+      return [
+        ...prevData,
+        { id: id, title: title, author: author, isbn: isbn },
+      ];
+    });
+  };
   mixpanel.track('Loaded give recommendations page');
   return (
     <div className={styles['container']}>
@@ -62,7 +70,11 @@ const GiveRecommendations = () => {
           genres={promptDetails['genres']}
         ></MessageBox>
       )}
-      <RecommendationInputForm promptID={promptID}></RecommendationInputForm>
+      <RecommendationInputForm
+        promptID={promptID}
+        bookAdded={bookAddHandler}
+      ></RecommendationInputForm>
+
       <Recommendations
         promptID={promptID}
         retrievedRecommendations={recommendations}
