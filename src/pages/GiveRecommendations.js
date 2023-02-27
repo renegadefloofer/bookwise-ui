@@ -8,6 +8,7 @@ import styles from './GetRecommendations.module.css';
 
 const GiveRecommendations = () => {
   const { promptID } = useParams();
+  console.log(promptID);
   const [promptDetails, setPromptDetails] = useState({ isAvailable: false });
   const [recommendations, setRecommendations] = useState([]);
 

@@ -7,6 +7,7 @@ const API_KEY = 'AIzaSyBVbgl1OrSUZy8SXDUKAtwYZDmFASE7axM';
 const RecommendationInputForm = ({ promptID }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [showSuggestions, setShowSuggestions] = useState(false);
   //const [searchParams, setSearchParams] = useState([]);
 
   const titleChangeHandler = (event) => {
@@ -29,11 +30,13 @@ const RecommendationInputForm = ({ promptID }) => {
     console.log('add book');
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
-    const raw = {
+    const raw = JSON.stringify({
       prompt_id: promptID,
       title: title,
       author: author,
-    };
+      isbn: 123123,
+      recommender: 'dev-user',
+    });
     const requestOptions = {
       method: 'POST',
       headers: myHeaders,
