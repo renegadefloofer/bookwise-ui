@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import MessageBox from '../components/MessageBox';
 import RecommendationInputForm from '../components/RecommendationInputForm';
 import Recommendations from '../components/Recommendations';
-import styles from './GetRecommendations.module.css';
+import styles from './GiveRecommendations.module.css';
 
 const GiveRecommendations = () => {
   const { promptID } = useParams();
@@ -19,7 +19,6 @@ const GiveRecommendations = () => {
     })
       .then((res) => {
         res.json().then((data) => {
-          console.log(data);
           setPromptDetails({
             prompter: data['data']['prompter'],
             genres: data['data']['genres'],

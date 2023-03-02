@@ -25,7 +25,7 @@ const RequestGenerationForm = ({ generateRequest }) => {
   };
   return (
     <div className={styles['container']}>
-      <h2>Choose upto 3 genres you like</h2>
+      <h2 className={styles['heading']}>Choose upto 3 genres you like</h2>
       <form className={styles['form']} onSubmit={submitHandler}>
         <select
           className={styles['items-container']}

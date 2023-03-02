@@ -1,7 +1,9 @@
-.recommendations-container {
-  border: 1px solid red;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 .heading {
   font-size: 1.2rem;
 }
@@ -11,17 +13,30 @@
   color: blueviolet;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .form-control {
   display: inline-block;
   padding: 1rem;
 }
 
 .form-control label {
-  padding-right: 0.2rem;
+  padding: 0.2rem;
 }
 
 .form-control input {
+  margin-right: 0.4em;
   border-radius: 0.2rem;
+}
+
+.form-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media (max-width: 600px) {

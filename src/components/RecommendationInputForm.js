@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import styles from './RecommendationInputForm.module.css';
-import BookSuggestions from './bookSuggestions';
-
-//Google Books API
-const API_KEY = 'AIzaSyBVbgl1OrSUZy8SXDUKAtwYZDmFASE7axM';
+import BookSuggestions from './BookSuggestions';
 
 const RecommendationInputForm = ({ promptID, bookAdded }) => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [isbn, setIsbn] = useState(null);
   const [inputsValid, setInputsValid] = useState({
     state: true,
     message: null,
@@ -62,7 +60,7 @@ const RecommendationInputForm = ({ promptID, bookAdded }) => {
       prompt_id: promptID,
       title: title,
       author: author,
-      isbn: 123123,
+      isbn: isbn,
       recommender: 'dev-user',
     });
     const requestOptions = {
@@ -93,24 +91,30 @@ const RecommendationInputForm = ({ promptID, bookAdded }) => {
     );
   };
 
+  const suggestionSelectHandler = (title, author, isbn) => {
+    setShowSuggestions(false);
+    setTitle(title);
+    setAuthor(author);
+    setIsbn(isbn);
+  };
   return (
     <div className={styles['form-container']}>
       <h3 className={styles['heading']}>Recommend a Book</h3>
-      <form>
+      <form className={styles['form']}>
         <div className={styles['form-control']}>
           <label htmlFor="title">Title</label>
           <input
             type="text"
             onChange={titleChangeHandler}
             onBlur={showSuggestionsHandler}
+            value={title}
           ></input>
-        </div>
-        <div className={styles['form-control']}>
           <label htmlFor="author">Author</label>
           <input
             type="text"
             onChange={authorChangeHandler}
             onBlur={showSuggestionsHandler}
+            value={author}
           ></input>
         </div>
         <div className={styles['form-action']}>
@@ -118,7 +122,11 @@ const RecommendationInputForm = ({ promptID, bookAdded }) => {
             <p className={styles['error']}>{inputsValid['message']}</p>
           )}
           {showSuggestions && (
-            <BookSuggestions title={title} author={author}></BookSuggestions>
+            <BookSuggestions
+              title={title}
+              author={author}
+              sendSuggestion={suggestionSelectHandler}
+            ></BookSuggestions>
           )}
           <button
             className={styles['btn']}

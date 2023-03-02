@@ -5,7 +5,9 @@
   align-items: center;
   margin: 0.2rem 1rem;
 }
-
+.heading {
+  margin: 1rem auto;
+}
 .form {
   display: flex;
   flex-direction: column;

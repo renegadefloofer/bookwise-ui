@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import BookSuggestion from './BookSuggestion';
+import styles from './BookSuggestions.module.css';
 
-const BookSuggestions = ({ title, author }) => {
+const BookSuggestions = ({ title, author, sendSuggestion }) => {
   const [bookSuggestions, setBookSuggestions] = useState([]);
 
   useEffect(() => {
-    const query = `intitle:${title}+inauthor:${author}`;
+    const query = `${title}+${author}`;
     var requestOptions = {
       method: 'GET',
       redirect: 'follow',
@@ -23,18 +25,27 @@ const BookSuggestions = ({ title, author }) => {
             isbn: item['volumeInfo']['industryIdentifiers'][0]['identifier'],
           };
         });
-        console.log(suggestedBooks);
-        setBookSuggestions(suggestedBooks);
+        const filteredSuggestions = suggestedBooks.filter(
+          (book) => book.title && book.author && book.isbn
+        );
+        setBookSuggestions(filteredSuggestions);
       });
   }, [title, author]);
 
   return (
-    <ul>
-      {bookSuggestions.map((book) => (
-        <li>
-          {book.title} by {book.author}
-        </li>
-      ))}
+    <ul className={styles['list']}>
+      {bookSuggestions.map((book) => {
+        return (
+          <li className={styles['list-item']} key={book.isbn}>
+            <BookSuggestion
+              title={book.title}
+              author={book.author[0]}
+              isbn={book.isbn}
+              sendSuggestion={sendSuggestion}
+            ></BookSuggestion>
+          </li>
+        );
+      })}
     </ul>
   );
 };
