@@ -1,4 +1,4 @@
-import styles from './bookSuggestion.module.css';
+import styles from './BookSuggestion.module.css';
 
 const BookSuggestion = ({ title, author, isbn, sendSuggestion }) => {
   const selectHandler = () => {
