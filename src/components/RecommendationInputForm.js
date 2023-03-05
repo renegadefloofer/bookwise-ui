@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styles from './RecommendationInputForm.module.css';
-import BookSuggestions from './BookSuggestions';
+import BookSuggestions from './bookSuggestions';
 
 const RecommendationInputForm = ({ promptID, bookAdded }) => {
   const [title, setTitle] = useState('');
