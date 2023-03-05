@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import BookSuggestion from './BookSuggestion';
-import styles from './BookSuggestions.module.css';
+import styles from './bookSuggestions.module.css';
 
 const BookSuggestions = ({ title, author, sendSuggestion }) => {
   const [bookSuggestions, setBookSuggestions] = useState([]);
